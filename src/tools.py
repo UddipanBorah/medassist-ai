@@ -1,0 +1,120 @@
+"""
+Agent "tools" — discrete, callable capabilities that the agent orchestrator
+can invoke while deciding how to respond. Separating these from the agent's
+control logic is what makes the system "agentic" rather than a single
+one-shot LLM call: the agent perceives the user's message, chooses which
+tool(s) to call based on that input, and only then produces a final answer.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from typing import List
+
+from .retriever import KBEntry, MedicalKBRetriever
+
+# Keyword patterns used by the red-flag safety tool. These are intentionally
+# simple and conservative (biased towards over-flagging) since this is a
+# safety-critical check: it is far better to escalate a false alarm than to
+# miss a genuine emergency.
+RED_FLAG_PATTERNS = [
+    r"\bchest pain\b", r"\bchest pressure\b", r"\bcan'?t breathe\b",
+    r"\bdifficulty breathing\b", r"\bshortness of breath\b",
+    r"\bblue lips\b", r"\bface (is )?droop", r"\bslurred speech\b",
+    r"\bsudden weakness\b", r"\bsudden numbness\b", r"\bworst headache\b",
+    r"\bsevere bleeding\b", r"\bheavy bleeding\b", r"\bunconscious\b",
+    r"\bpassed out\b", r"\bfainted\b", r"\bsevere allergic reaction\b",
+    r"\bthroat (is )?swelling\b", r"\bswelling of (the )?face\b",
+    r"\banaphylax", r"\bsuicid", r"\bkill myself\b", r"\bself[- ]harm\b",
+    r"\bwant to die\b", r"\bepipen\b", r"\bstroke\b", r"\bheart attack\b",
+    r"\bfracture\b.*\bdeformity\b", r"\bmajor accident\b", r"\bchoking\b",
+]
+
+_RED_FLAG_REGEX = re.compile("|".join(RED_FLAG_PATTERNS), re.IGNORECASE)
+
+
+@dataclass
+class RedFlagResult:
+    triggered: bool
+    matched_terms: List[str]
+    matched_entries: List[KBEntry]
+
+
+def red_flag_check(query: str, retriever: MedicalKBRetriever) -> RedFlagResult:
+    """
+    Tool: emergency/"red-flag" symptom screening.
+
+    This runs BEFORE any retrieval-augmented generation. If it fires, the
+    agent short-circuits the normal RAG pipeline and returns an immediate
+    safety response instead of a generated answer — a deliberate design
+    choice so that emergency guidance never depends on an LLM call
+    succeeding, being available, or being correctly prompted.
+    """
+    matches = _RED_FLAG_REGEX.findall(query.lower())
+    triggered = len(matches) > 0
+
+    # Also cross-check against KB entries explicitly marked as red_flag, in
+    # case the user's phrasing matches a known emergency condition's symptom
+    # description closely even though it doesn't hit a raw keyword pattern
+    # (e.g. "my face feels droopy and I can't speak properly" doesn't match
+    # the literal phrase "face droop" but clearly describes stroke symptoms).
+    #
+    # min_score=0.15 with no relative cutoff: we deliberately keep EVERY
+    # reasonably-scoring red-flag entry rather than only the single top
+    # match, because for a safety check it is far better to over-escalate
+    # (flag something that turns out not to be an emergency) than to
+    # under-escalate (miss a genuine one) by being too strict on score
+    # ranking. Non-emergency entries returned by the same search are
+    # simply ignored below.
+    candidates = retriever.search(query, top_k=3, min_score=0.15, relative_cutoff=0.0)
+    matched_entries = [e for e in candidates if e.red_flag]
+    if matched_entries:
+        triggered = True
+
+    return RedFlagResult(triggered=triggered, matched_terms=matches, matched_entries=matched_entries)
+
+
+def retrieve_medical_info(query: str, retriever: MedicalKBRetriever, top_k: int = 3) -> List[KBEntry]:
+    """Tool: retrieve relevant medical knowledge-base entries (the RAG step)."""
+    return retriever.search(query, top_k=top_k)
+
+
+def needs_clarification(query: str) -> bool:
+    """
+    Tool: a lightweight heuristic that decides whether the user's message
+    is too vague to answer usefully (e.g. "I don't feel good") and the
+    agent should ask a clarifying follow-up question instead of guessing.
+    """
+    cleaned = query.strip().lower()
+
+    # Phrases that convey "something is wrong" without naming any actual
+    # symptom - these can appear in short OR longer sentences ("I'm just not
+    # feeling great today"), so they're checked regardless of word count.
+    vague_phrases = [
+        "not feeling well", "not feeling good", "not feeling great",
+        "don't feel good", "don't feel well", "feeling unwell",
+        "feel sick", "feel bad", "feel awful", "feel terrible",
+    ]
+    if any(phrase in cleaned for phrase in vague_phrases):
+        return True
+
+    # Very short messages are also treated as vague, since there usually
+    # isn't enough information yet to retrieve anything meaningful.
+    if len(cleaned.split()) <= 3:
+        vague_terms = ["sick", "unwell", "bad", "ill", "help", "pain"]
+        if any(term in cleaned for term in vague_terms) or len(cleaned.split()) <= 2:
+            return True
+    return False
+
+
+SAFETY_DISCLAIMER = (
+    "⚠️ This is general educational information generated by an AI "
+    "assistant, not a medical diagnosis. Please consult a licensed healthcare "
+    "professional for advice specific to your situation."
+)
+
+
+def get_disclaimer() -> str:
+    """Tool: standard safety disclaimer appended to every non-emergency answer."""
+    return SAFETY_DISCLAIMER
