@@ -1,0 +1,210 @@
+[
+  {
+    "id": "common_cold",
+    "condition": "Common Cold",
+    "category": "Respiratory",
+    "symptoms": "runny or stuffy nose, sneezing, sore throat, mild cough, low-grade fever, mild fatigue",
+    "advice": "The common cold is a mild viral infection that usually resolves on its own in 7-10 days. Rest, stay hydrated, and use over-the-counter decongestants or pain relievers (e.g., paracetamol) for symptom relief. Warm fluids and saltwater gargles can soothe a sore throat. See a doctor if symptoms last more than 10 days or worsen suddenly.",
+    "red_flag": false
+  },
+  {
+    "id": "influenza",
+    "condition": "Influenza (Flu)",
+    "category": "Respiratory",
+    "symptoms": "sudden fever, chills, body aches, headache, dry cough, extreme fatigue, sore throat",
+    "advice": "Flu is a viral infection more severe than the common cold. Rest, fluids, and fever-reducing medication help most people recover in about a week. Antiviral drugs may help if started early and are usually reserved for high-risk patients. Seek care promptly if you are elderly, pregnant, or have a chronic condition, or if breathing becomes difficult.",
+    "red_flag": false
+  },
+  {
+    "id": "type2_diabetes",
+    "condition": "Type 2 Diabetes",
+    "category": "Endocrine",
+    "symptoms": "increased thirst (feeling very thirsty), frequent urination, unexplained weight loss (losing weight without trying), fatigue (feeling tired), blurred vision, slow-healing wounds",
+    "advice": "Type 2 diabetes is a chronic condition where the body cannot use insulin effectively, leading to high blood sugar. Management includes a balanced diet, regular exercise, weight management, blood glucose monitoring, and medications such as metformin as prescribed by a doctor. Routine screening for complications (eyes, kidneys, feet) is important. This condition requires ongoing medical supervision and cannot be diagnosed by a chatbot.",
+    "red_flag": false
+  },
+  {
+    "id": "hypertension",
+    "condition": "Hypertension (High Blood Pressure)",
+    "category": "Cardiovascular",
+    "symptoms": "often no symptoms; occasionally headache, shortness of breath, or nosebleeds in severe cases",
+    "advice": "Hypertension is a long-term elevation of blood pressure that increases the risk of heart disease and stroke. Lifestyle changes such as reducing salt intake, regular exercise, limiting alcohol, and stress management help control it, alongside prescribed medication when needed. Regular blood pressure monitoring is recommended. A reading above 180/120 mmHg with symptoms like chest pain or severe headache is a medical emergency.",
+    "red_flag": false
+  },
+  {
+    "id": "migraine",
+    "condition": "Migraine",
+    "category": "Neurological",
+    "symptoms": "throbbing headache (often one-sided), nausea, sensitivity to light and sound, visual disturbances (aura)",
+    "advice": "Migraines are recurrent headaches often triggered by stress, certain foods, hormonal changes, or lack of sleep. Resting in a dark quiet room, staying hydrated, and over-the-counter pain relief can help mild episodes. Frequent or severe migraines may need preventive medication prescribed by a neurologist. A sudden, extremely severe 'worst headache of your life' needs urgent evaluation.",
+    "red_flag": false
+  },
+  {
+    "id": "asthma",
+    "condition": "Asthma",
+    "category": "Respiratory",
+    "symptoms": "wheezing, shortness of breath, chest tightness, coughing especially at night or with exercise",
+    "advice": "Asthma is a chronic condition causing inflammation and narrowing of the airways. It is managed with inhaled bronchodilators for quick relief and inhaled corticosteroids for long-term control, along with avoiding known triggers such as allergens or smoke. Patients should have a written action plan from their doctor. Severe breathing difficulty that does not improve with a rescue inhaler is an emergency.",
+    "red_flag": false
+  },
+  {
+    "id": "seasonal_allergies",
+    "condition": "Seasonal Allergies (Allergic Rhinitis)",
+    "category": "Immune/Respiratory",
+    "symptoms": "sneezing, itchy or watery eyes, runny nose, nasal congestion, itchy throat",
+    "advice": "Seasonal allergies occur when the immune system reacts to pollen or other airborne allergens. Antihistamines, nasal corticosteroid sprays, and avoiding known triggers (keeping windows closed during high-pollen periods, using air filters) usually control symptoms well. See a doctor if over-the-counter treatments are not effective or symptoms significantly affect daily life.",
+    "red_flag": false
+  },
+  {
+    "id": "uti",
+    "condition": "Urinary Tract Infection (UTI)",
+    "category": "Genitourinary",
+    "symptoms": "burning sensation during urination, frequent urge to urinate, cloudy or strong-smelling urine, lower abdominal discomfort",
+    "advice": "UTIs are common bacterial infections of the urinary tract, more frequent in women. They are typically treated with a short course of antibiotics prescribed after a urine test. Drinking plenty of water can help. Fever, chills, or back/flank pain alongside urinary symptoms may indicate a kidney infection and needs prompt medical attention.",
+    "red_flag": false
+  },
+  {
+    "id": "gastroenteritis",
+    "condition": "Gastroenteritis (Stomach Flu)",
+    "category": "Gastrointestinal",
+    "symptoms": "diarrhea, vomiting, abdominal cramps, low-grade fever, nausea",
+    "advice": "Gastroenteritis is usually caused by a viral or bacterial infection and resolves within a few days. Focus on staying hydrated with oral rehydration solutions, eating bland foods as tolerated, and resting. Seek medical care if there are signs of dehydration (very little urine, dizziness), blood in stool, high fever, or symptoms lasting more than a few days.",
+    "red_flag": false
+  },
+  {
+    "id": "anxiety",
+    "condition": "Generalized Anxiety",
+    "category": "Mental Health",
+    "symptoms": "excessive worry (feeling anxious most of the time), restlessness, difficulty concentrating, muscle tension, sleep disturbance (trouble sleeping), rapid heartbeat",
+    "advice": "Anxiety disorders involve persistent, excessive worry that interferes with daily life. Approaches include therapy (such as cognitive behavioral therapy), relaxation techniques, regular exercise, reduced caffeine intake, and, when appropriate, medication prescribed by a psychiatrist. If anxiety is severe, persistent, or accompanied by thoughts of self-harm, professional mental health support should be sought promptly.",
+    "red_flag": false
+  },
+  {
+    "id": "low_back_pain",
+    "condition": "Low Back Pain",
+    "category": "Musculoskeletal",
+    "symptoms": "dull or sharp pain in the lower back, stiffness, pain radiating to the leg (in some cases), muscle spasm",
+    "advice": "Most low back pain is due to muscle strain and improves within a few weeks with gentle activity, heat/cold application, and over-the-counter pain relievers. Prolonged bed rest is not recommended. See a doctor if pain follows an injury, is accompanied by numbness or weakness in the legs, or involves loss of bladder/bowel control (this last combination is an emergency).",
+    "red_flag": false
+  },
+  {
+    "id": "acne",
+    "condition": "Acne",
+    "category": "Dermatology",
+    "symptoms": "pimples, blackheads, whiteheads, oily skin, occasional cysts, mostly on face, chest, or back",
+    "advice": "Acne results from clogged hair follicles and excess oil production, often influenced by hormones. Gentle cleansing, avoiding harsh scrubbing, and over-the-counter treatments containing benzoyl peroxide or salicylic acid can help mild cases. Moderate to severe or scarring acne should be evaluated by a dermatologist for prescription treatment.",
+    "red_flag": false
+  },
+  {
+    "id": "conjunctivitis",
+    "condition": "Conjunctivitis (Pink Eye)",
+    "category": "Ophthalmology",
+    "symptoms": "redness in the eye, itching, watery or thick discharge, gritty feeling, mild sensitivity to light",
+    "advice": "Conjunctivitis can be viral, bacterial, or allergic. Viral and allergic forms often resolve with supportive care such as cool compresses and artificial tears; bacterial forms may need prescribed antibiotic eye drops. Practice good hand hygiene as it can be contagious. Seek care urgently for severe eye pain, vision changes, or if a newborn develops these symptoms.",
+    "red_flag": false
+  },
+  {
+    "id": "iron_deficiency_anemia",
+    "condition": "Iron Deficiency Anemia",
+    "category": "Hematology",
+    "symptoms": "fatigue, pale skin, weakness, shortness of breath on exertion, dizziness, brittle nails",
+    "advice": "Iron deficiency anemia occurs when the body lacks enough iron to produce healthy red blood cells, often due to poor diet, blood loss, or absorption issues. Treatment involves iron-rich foods or supplements and addressing the underlying cause, guided by blood test results. Persistent or severe fatigue with breathlessness should be evaluated by a doctor.",
+    "red_flag": false
+  },
+  {
+    "id": "hypothyroidism",
+    "condition": "Hypothyroidism",
+    "category": "Endocrine",
+    "symptoms": "fatigue, weight gain, cold intolerance, dry skin, constipation, hair thinning, depressed mood",
+    "advice": "Hypothyroidism is an underactive thyroid gland producing insufficient hormone. It is diagnosed with blood tests and typically managed with daily thyroid hormone replacement medication under medical supervision, with periodic monitoring of hormone levels.",
+    "red_flag": false
+  },
+  {
+    "id": "eczema",
+    "condition": "Eczema (Atopic Dermatitis)",
+    "category": "Dermatology",
+    "symptoms": "dry, itchy, inflamed patches of skin, redness, sometimes oozing or crusting when scratched",
+    "advice": "Eczema is a chronic inflammatory skin condition often linked to allergies or a sensitive skin barrier. Regular moisturizing, avoiding known irritants, and mild topical steroids during flare-ups (as advised by a doctor) help manage symptoms. Widespread or infected-looking eczema should be assessed by a dermatologist.",
+    "red_flag": false
+  },
+  {
+    "id": "insomnia",
+    "condition": "Insomnia",
+    "category": "Sleep",
+    "symptoms": "difficulty falling or staying asleep (trouble sleeping), waking too early, daytime fatigue (feeling tired during the day), irritability, trouble concentrating",
+    "advice": "Insomnia can result from stress, poor sleep habits, or underlying medical/mental health conditions. Good sleep hygiene (consistent sleep schedule, limiting screens and caffeine before bed, a comfortable sleep environment) and cognitive behavioral therapy for insomnia are first-line approaches. Persistent insomnia affecting daily functioning warrants medical evaluation.",
+    "red_flag": false
+  },
+  {
+    "id": "gerd",
+    "condition": "GERD (Acid Reflux)",
+    "category": "Gastrointestinal",
+    "symptoms": "heartburn, regurgitation, chest discomfort after eating, sour taste in mouth, chronic cough",
+    "advice": "GERD occurs when stomach acid frequently flows back into the esophagus. Smaller meals, avoiding trigger foods (spicy, fatty, caffeine, alcohol), not lying down soon after eating, and antacids or acid-reducing medications usually help. Chest discomfort can sometimes mimic heart problems, so new or severe chest pain should always be evaluated urgently to rule out a cardiac cause.",
+    "red_flag": false
+  },
+  {
+    "id": "vitamin_d_deficiency",
+    "condition": "Vitamin D Deficiency",
+    "category": "Nutrition",
+    "symptoms": "fatigue, bone or muscle pain, muscle weakness, mood changes",
+    "advice": "Vitamin D deficiency is common with limited sun exposure or certain diets. It is confirmed with a blood test and managed with supplements, dietary changes, and safe sun exposure, guided by a healthcare provider based on severity.",
+    "red_flag": false
+  },
+  {
+    "id": "obesity",
+    "condition": "Obesity / Overweight",
+    "category": "Metabolic",
+    "symptoms": "excess body weight relative to height (elevated BMI), reduced stamina, joint strain",
+    "advice": "Obesity is influenced by diet, activity levels, genetics, and metabolic factors, and raises the risk of diabetes, heart disease, and joint problems. A sustainable approach combining balanced nutrition, regular physical activity, and behavioral changes works best; medical or surgical options exist for select cases and should be discussed with a healthcare provider.",
+    "red_flag": false
+  },
+  {
+    "id": "heart_attack",
+    "condition": "Heart Attack (Myocardial Infarction)",
+    "category": "Cardiovascular Emergency",
+    "symptoms": "chest pain or pressure, pain spreading to arm/jaw/back, shortness of breath, cold sweat, nausea, lightheadedness",
+    "advice": "These symptoms may indicate a heart attack, which is a life-threatening emergency. Call emergency medical services immediately, chew an aspirin if not allergic and advised to do so, and do not drive yourself to the hospital.",
+    "red_flag": true
+  },
+  {
+    "id": "stroke",
+    "condition": "Stroke",
+    "category": "Neurological Emergency",
+    "symptoms": "sudden weakness or numbness on one side of the face/arm/leg, sudden confusion or trouble speaking, sudden vision problems, sudden severe headache, loss of balance",
+    "advice": "These are warning signs of a stroke (remember FAST: Face drooping, Arm weakness, Speech difficulty, Time to call emergency services). This is a medical emergency requiring immediate care, as rapid treatment greatly improves outcomes. Call emergency services immediately.",
+    "red_flag": true
+  },
+  {
+    "id": "anaphylaxis",
+    "condition": "Anaphylaxis (Severe Allergic Reaction)",
+    "category": "Allergic Emergency",
+    "symptoms": "sudden swelling of face/lips/throat, difficulty breathing, widespread hives, rapid pulse, dizziness or fainting after exposure to an allergen",
+    "advice": "This is a life-threatening allergic reaction. Use an epinephrine auto-injector immediately if available and call emergency services right away, even if symptoms seem to improve afterward.",
+    "red_flag": true
+  },
+  {
+    "id": "severe_breathing_difficulty",
+    "condition": "Severe Difficulty Breathing",
+    "category": "Respiratory Emergency",
+    "symptoms": "gasping for air, blue lips or face, inability to speak full sentences, severe chest tightness, choking",
+    "advice": "Severe difficulty breathing is a medical emergency. Call emergency services immediately.",
+    "red_flag": true
+  },
+  {
+    "id": "severe_bleeding",
+    "condition": "Severe Bleeding / Major Trauma",
+    "category": "Trauma Emergency",
+    "symptoms": "heavy uncontrolled bleeding, deep wound, suspected fracture with deformity, major accident injury, loss of consciousness after injury",
+    "advice": "This requires immediate emergency care. Apply firm pressure to any bleeding wound with a clean cloth and call emergency services immediately.",
+    "red_flag": true
+  },
+  {
+    "id": "suicidal_ideation",
+    "condition": "Suicidal Thoughts / Mental Health Crisis",
+    "category": "Mental Health Emergency",
+    "symptoms": "thoughts of self-harm or suicide, talking about wanting to die, feeling hopeless or trapped, sudden calmness after a period of severe depression",
+    "advice": "If you or someone you know is having thoughts of suicide or self-harm, please reach out immediately to a crisis helpline or emergency services, or go to the nearest emergency room. You are not alone, and immediate support is available.",
+    "red_flag": true
+  }
+]
